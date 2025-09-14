@@ -32,7 +32,6 @@ jobs:
               console.error('Error: Source code from secrets is missing or empty.');
               process.exit(1);
             }
-
             // --- 最终平衡型混淆配置 ---
             const obfuscationOptions = {
                 compact: true,
@@ -41,7 +40,6 @@ jobs:
                 controlFlowFlatteningThreshold: 0.75,
                 deadCodeInjection: true,
                 deadCodeInjectionThreshold: 0.4,
-
                 // 借鉴自新配置的高效保护功能
                 stringArray: true,
                 stringArrayEncoding: ['base64'],
@@ -55,12 +53,10 @@ jobs:
                 splitStringsChunkLength: 10,
                 
                 transformObjectKeys: true,
-
                 // 禁用对性能影响最大的选项
                 selfDefending: false,
                 debugProtection: false
             };
-
             const obfuscatedCode = JavaScriptObfuscator.obfuscate(originalCode, obfuscationOptions).getObfuscatedCode();
             
             fs.writeFileSync('./少年你相信光吗', obfuscatedCode, 'utf8');
